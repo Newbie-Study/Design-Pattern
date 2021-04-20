@@ -1,9 +1,10 @@
 package jayden.observer.practice.display
 
-import jayden.observer.practice.subject.Subject
+import jayden.observer.practice.subject.WeatherData
+import java.util.*
 
 class StatisticsDisplay(
-    weatherData: Subject
+    weatherData: Observable
 ) : Observer, DisplayElement {
 
     private var maxTemp: Float = 0.0f
@@ -12,22 +13,24 @@ class StatisticsDisplay(
     private var numReadings: Int = 0
 
     init {
-        weatherData.registerObserver(this)
+        weatherData.addObserver(this)
     }
 
-    override fun update(temperature: Float, humidity: Float, pressure: Float) {
-        tempSum += temperature
-        numReadings.inc()
+    override fun update(obs: Observable?, arg: Any?) {
+        if (obs is WeatherData) {
+            tempSum += obs.temperature
+            numReadings.inc()
 
-        if (temperature > maxTemp) {
-            maxTemp = temperature
+            if (obs.temperature > maxTemp) {
+                maxTemp = obs.temperature
+            }
+
+            if (obs.temperature < minTemp) {
+                minTemp = obs.temperature
+            }
+
+            display()
         }
-
-        if (temperature < minTemp) {
-            minTemp = temperature
-        }
-
-        display()
     }
 
     override fun display() {

@@ -1,23 +1,26 @@
 package jayden.observer.practice.display
 
-import jayden.observer.practice.subject.Subject
+import jayden.observer.practice.subject.WeatherData
+import java.util.*
 
 class ForecastDisplay(
-    weatherData: Subject
+    weatherData: Observable
 ) : Observer, DisplayElement {
 
     private var currentPressure: Float = 29.92f
     private var lastPressure: Float = 0.0f
 
     init {
-        weatherData.registerObserver(this)
+        weatherData.addObserver(this)
     }
 
-    override fun update(temperature: Float, humidity: Float, pressure: Float) {
-        lastPressure = currentPressure
-        currentPressure = pressure
+    override fun update(obs: Observable?, arg: Any?) {
+        if (obs is WeatherData) {
+            lastPressure = currentPressure
+            currentPressure = obs.pressure
 
-        display()
+            display()
+        }
     }
 
     override fun display() {

@@ -1,15 +1,16 @@
 package jayden.observer.practice.display
 
-import jayden.observer.practice.subject.Subject
+import jayden.observer.practice.subject.WeatherData
+import java.util.*
 
 class HeatIndexDisplay(
-    weatherData: Subject
+    weatherData: Observable
 ) : Observer, DisplayElement {
 
     private var heatIndex: Float = 0.0f
 
     init {
-        weatherData.registerObserver(this)
+        weatherData.addObserver(this)
     }
 
     private fun computeHeatIndex(t: Float, hm: Float): Float {
@@ -23,10 +24,10 @@ class HeatIndexDisplay(
                 (0.0000000000481975 * (t * t * t * hm * hm * hm))).toFloat()
     }
 
-    override fun update(temperature: Float, humidity: Float, pressure: Float) {
-        heatIndex = computeHeatIndex(temperature, humidity)
-
-        display()
+    override fun update(obs: Observable?, arg: Any?) {
+        if (obs is WeatherData) {
+            heatIndex = computeHeatIndex(obs.temperature, obs.humidity)
+        }
     }
 
     override fun display() {

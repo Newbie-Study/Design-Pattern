@@ -1,10 +1,8 @@
 package jayden.observer.practice.subject
 
-import jayden.observer.practice.display.Observer
+import java.util.*
 
-class WeatherData : Subject {
-
-    private val observers = mutableListOf<Observer>()
+class WeatherData : Observable() {
 
     var temperature: Float = 0.0f
         private set
@@ -13,21 +11,8 @@ class WeatherData : Subject {
     var pressure: Float = 0.0f
         private set
 
-    override fun registerObserver(o: Observer) {
-        observers.add(o)
-    }
-
-    override fun removeObserver(o: Observer) {
-        observers.remove(o)
-    }
-
-    override fun notifyObservers() {
-        observers.forEach { observer ->
-            observer.update(temperature, humidity, pressure)
-        }
-    }
-
     private fun measurementsChanged() {
+        setChanged()
         notifyObservers()
     }
 
