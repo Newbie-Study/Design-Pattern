@@ -54,7 +54,6 @@ class NotificationManager : ActiveObservable {
     }
 
     fun setTimeHour(hour: Int) {
-        println("현재 시간 : $hour")
         timeHour = hour
 
         considerNotify()

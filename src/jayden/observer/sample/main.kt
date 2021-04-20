@@ -13,10 +13,10 @@ fun main() {
     }
 
     with(notificationManager) {
-        setTimeHour(23)
+        setTimeHour(23.also { println("현재 시간 : $it") })
         setPushMessage("재난 문자 발송")
-        setTimeHour(5)
-        setTimeHour(9)
+        setTimeHour(5.also { println("현재 시간 : $it") })
+        setTimeHour(9.also { println("현재 시간 : $it") })
         setPushMessage("확진자 동선 안내")
     }
 
