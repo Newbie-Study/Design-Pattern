@@ -4,7 +4,7 @@ fun main() {
 
     val stockData = StockData(closingPrice = 100.0)
 
-    MarketPriceDisplay(stockData)
+    stockData.addObserver(MarketPriceDisplay())
 
     stockData.setMarketPrice(105.0)
     stockData.setMarketPrice(99.0)

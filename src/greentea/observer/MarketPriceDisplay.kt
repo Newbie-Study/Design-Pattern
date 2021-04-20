@@ -1,13 +1,9 @@
 package greentea.observer
 
-class MarketPriceDisplay(stockData: StockData) : Observer {
+class MarketPriceDisplay : Observer {
 
     private var marketPrice: Double? = null
-    private var totalStocks: Int = stockData.totalStocks
-
-    init {
-        stockData.registerObserver(this)
-    }
+    private var totalStocks: Int? = null
 
     override fun update(price: Double, totalStocks: Int) {
         marketPrice = price

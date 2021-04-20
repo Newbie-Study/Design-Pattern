@@ -6,6 +6,10 @@ class StockData(closingPrice: Double) : Subject {
     var totalStocks = 100
     private var observers = mutableListOf<Observer>()
 
+    fun addObserver(o: Observer) {
+        observers.add(o)
+    }
+
     override fun registerObserver(o: Observer) {
         observers.add(o)
     }
