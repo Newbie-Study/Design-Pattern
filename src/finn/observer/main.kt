@@ -1,9 +1,8 @@
-import finn.observer.Galaxy
-import finn.observer.IPhone
-import finn.observer.KakaoTalk
-import finn.observer.MacBook
+package finn.observer
 
 fun main(){
+
+    // 주석 : 그냥 카카오톡입니다
 
     val kakaoTalk = KakaoTalk()
     val galaxy = Galaxy()
@@ -13,9 +12,11 @@ fun main(){
     kakaoTalk.onAlarm(galaxy)
     kakaoTalk.onAlarm(iPhone)
     kakaoTalk.onAlarm(macBook)
+    println()
 
     kakaoTalk.receiveTalk("뭐해??")
 
+    println()
     kakaoTalk.offAlarm(galaxy)
     println()
 
