@@ -2,7 +2,7 @@ package jayden.decorator.sample.decorator
 
 import jayden.decorator.sample.board.Board
 
-class ExpandableBoard(
+class ConditionalBoard(
     private val board: Board
 ) : BoardDecorator() {
 

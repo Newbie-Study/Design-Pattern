@@ -1,7 +1,7 @@
 package jayden.decorator.sample
 
 import jayden.decorator.sample.board.ITBoard
-import jayden.decorator.sample.decorator.ExpandableBoard
+import jayden.decorator.sample.decorator.ConditionalBoard
 
 fun main() {
     val itBoard = ITBoard(
@@ -18,7 +18,7 @@ fun main() {
     itBoard.expand()
     // itBoard.expand()  // IndexOutOfBoundsException 발생
 
-    val expandableBoard = ExpandableBoard(itBoard)
+    val expandableBoard = ConditionalBoard(itBoard)
 
     expandableBoard.expand()
     expandableBoard.expand()
