@@ -1,18 +1,18 @@
 package tony.command.example
 
 // Receiver
-abstract class Character {
-    abstract var attack: Int
-    abstract var defense: Int
-    abstract var speed: Int
+interface Character {
+    var attack: Int
+    var defense: Int
+    var speed: Int
 
-    abstract fun skill1()
-    abstract fun skill2()
-    abstract fun skill3()
-    abstract fun ultimateSkill()
+    fun skill1()
+    fun skill2()
+    fun skill3()
+    fun ultimateSkill()
 }
 
-class KaiSa : Character() {
+class KaiSa : Character {
     override var attack: Int = 59
     override var defense: Int = 28
     override var speed: Int = 335
@@ -34,7 +34,7 @@ class KaiSa : Character() {
     }
 }
 
-class LeeSin : Character() {
+class LeeSin : Character {
     override var attack: Int = 70
     override var defense: Int = 36
     override var speed: Int = 345
