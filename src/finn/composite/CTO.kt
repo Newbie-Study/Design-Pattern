@@ -6,7 +6,6 @@ class CTO : Group {
 
     override fun work() {
         println("나는 기술 대장, 밑에 사람들 일해라")
-
         for(t in techGroup) t.work()
     }
 
