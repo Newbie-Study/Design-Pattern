@@ -2,6 +2,7 @@ package finn.more
 
 fun main() {
     val driveMode = Mode { println("drive mode") }
+
     driveMode.drive()
 
     val people: People = People.of("finn", 25)
@@ -9,7 +10,6 @@ fun main() {
 
     val newPeople: People = NewPeople(people, "010-1234-5678")
     println(newPeople)
-
 }
 
 /*
@@ -17,7 +17,7 @@ fun main() {
  */
 
 fun interface Mode {
-    fun drive()
+    fun drive() // 얘가 오버라이딩됨
 }
 
 /*
